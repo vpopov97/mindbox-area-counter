@@ -7,7 +7,7 @@ namespace AreaCounter.Presentation;
 
 public interface IFigureFactory
 {
-    IFigure CreateFigure(FigureType type);
+    IFigure CreateFigure(FigureType type, object[] arguments);
 }
 
 public class FigureFactory : IFigureFactory
@@ -23,21 +23,21 @@ public class FigureFactory : IFigureFactory
     {
         Assembly assembly = Assembly.Load("Domain");
         _types = assembly.GetTypes()
-            .Where(t => t.IsClass && t.Namespace == "AreaCounter.Core.Domain.Entities" )
+            .Where(t => t.IsClass && t.Namespace == "AreaCounter.Core.Domain.Entities")
             .ToDictionary(t => t.Name, t => t);
     }
 
-    public IFigure CreateFigure(FigureType type)
+    public IFigure CreateFigure(FigureType type, object[] constructorArguments)
     {
-        if (!_types.ContainsKey(type.ToString()))
-        {
+        string figureType = type.ToString() + "Entity";
+        if (!_types.ContainsKey(figureType))
             throw new Exception("Неизвестный тип фигуры");
-        }
 
-        Type t = _types[type.ToString()];
-        object[] constructorArguments = new object[] { 4 };
+        Type t = _types[figureType];
         return Activator.CreateInstance(t, constructorArguments) as IFigure;
     }
+
+
 
     public static double GetArea(IFigure figure)
     {

@@ -1,7 +1,49 @@
-# mindbox-area-counter
+
+**Название библиотеки**
+```
+mindbox-area-counter 
+```
+
+**Автор**
+
+```
+Popov Viktor
+```
+
+**Описание**
+
+```
 тестовое задание для компании mindbox
+```
 
-dotnet new console -n mindbox-area-counter
-dotnet sln add MyNewProject/MyNewProject.csproj
+**Установка**
 
-просмотр readme ctrl + shift + v
+```
+Нужно добавить Библиотеку в ваше решение
+```
+
+**Использование**
+
+```c#
+// Импортируем библиотеку
+using AreaCounter.Presentation;
+
+// Создаем экземпляр класса
+IFigure Triangle = figureFactory.CreateFigure(FigureType.TriangleEntity, new object[] { 40, 30, 50 });
+
+// Находим площадь в условных единицах
+Triangle.GetArea();
+```
+
+**Тестирование**
+
+```
+dotnet test
+```
+
+**Примечания**
+
+```
+Библиотека на данный момент не имеет подсказок о необходимых параметрах конструктора для создания фигуры,
+ я не придумал как написать это в общем случае в представлении. думал что может подойдут генераторы кода но с ними я не работал
+```
