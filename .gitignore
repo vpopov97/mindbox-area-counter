@@ -1,0 +1,31 @@
+# Игнорировать все файлы .bin и .obj
+**/bin/
+**/obj/
+
+# Игнорировать файлы, создаваемые средой разработки Visual Studio Code
+.vscode/
+
+# Игнорировать файлы, создаваемые системой сборки .NET
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Игнорировать файлы, создаваемые системой сборки .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Игнорировать файлы, создаваемые системой сборки NuGet
+*.nupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+#!**/[Pp]ackages/repositories.config
+*.nuget.props
+*.nuget.targets
+
+# Игнорировать файлы, создаваемые системой сборки MSBuild
+**/AzureFunctions/bin
+**/AzureFunctions/obj
+**/.templateengine
+
